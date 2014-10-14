@@ -11,8 +11,8 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="FaceID.jar" size="8027" download="eager" />
-    <jar href="lib/opencv-249.jar" size="464723" download="eager" />
+    <jar href="FaceID.jar" size="10161" download="eager" />
+    <jar href="lib/opencv-249.jar" size="464719" download="eager" />
   </resources>
 <security>
   <all-permissions/>

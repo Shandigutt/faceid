@@ -18,14 +18,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javax.imageio.ImageIO;
@@ -43,6 +48,7 @@ public class FXMLDocumentController implements Initializable {
     private String location;
     private static int fileCount = 0;
     private ObservableList filesCollectin;
+    private double x1 =0 ,x2 = 0,y1 = 0,y2 = 0,thickness;
     
     @FXML
     private Button open;
@@ -53,27 +59,27 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane workSpace;
     @FXML
-    private CheckBox edges;
+    private RadioButton point1;
     @FXML
-    private CheckBox point1;
-    @FXML
-    private CheckBox point2;
+    private RadioButton point2;
     @FXML
     private Button calculate;
     @FXML
-    private Label thickness;
+    private TextField thickness_textField;
     @FXML
-    private Label x1;
+    private TextField x1_textField;
     @FXML
-    private Label x2;
+    private TextField x2_textField;
     @FXML
-    private Label y1;
+    private TextField y1_textField;
     @FXML
-    private Label y2;
+    private TextField y2_textField;
     @FXML
     private ImageView imageView1;
     @FXML
     private ImageView imageView2;
+    @FXML
+    private ToggleGroup point;
     
     
     
@@ -101,6 +107,11 @@ public class FXMLDocumentController implements Initializable {
         }
         
         
+    }
+    @FXML
+    private void calculate(ActionEvent event) {
+        thickness = (double)Math.sqrt((((x2 - x1)*(x2 - x1)) + ((y1-y2)*(y1-y2))));
+        thickness_textField.setText(""+thickness);
     }
     
     @Override
@@ -141,7 +152,28 @@ public class FXMLDocumentController implements Initializable {
                     
             }
         });
+        
+        imageView1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                
+                if(point.getSelectedToggle().getUserData().equals(point1.getUserData())){
+                    x1 = (double) event.getX();
+                    y1 = (double) event.getY();
+                    x1_textField.setText(""+x1);
+                    y1_textField.setText(""+y1);
+                }else if(point.getSelectedToggle().getUserData().equals(point2.getUserData())){
+                    x2 = (double) event.getX();
+                    y2 = (double) event.getY();
+                    x2_textField.setText(""+x2);
+                    y2_textField.setText(""+y2);
+                }
+            }
+        });
     }    
+    
 
     
 }

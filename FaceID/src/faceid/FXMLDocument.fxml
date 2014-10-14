@@ -29,8 +29,6 @@
                <children>
                   <Button fx:id="open" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openDirectory" text="Open Directory" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
                   <Label fx:id="locationPath" layoutX="118.0" layoutY="18.0" AnchorPane.leftAnchor="118.0" AnchorPane.topAnchor="18.0" />
-                  <CheckBox fx:id="point1" layoutX="304.0" layoutY="2.0" mnemonicParsing="false" text="Point 1" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="2.0" />
-                  <CheckBox fx:id="point2" layoutX="396.0" layoutY="2.0" mnemonicParsing="false" text="Point 2" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="2.0" />
                   <Label layoutX="305.0" layoutY="21.0" text="X1:" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="21.0">
                      <font>
                         <Font size="10.0" />
@@ -52,27 +50,44 @@
                      </font>
                   </Label>
                   <Button fx:id="calculate" layoutX="183.0" layoutY="6.0" mnemonicParsing="false" text="Measure distance" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="6.0" />
-                  <Label fx:id="thickness" layoutX="235.0" layoutY="34.0" textAlignment="CENTER" AnchorPane.rightAnchor="359.0" AnchorPane.topAnchor="34.0" />
-                  <Label layoutX="320.0" layoutY="21.0" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="21.0" fx:id="x1">
+                  <TextField fx:id="thickness_textField" editable="false" layoutX="785.0" layoutY="34.0" prefHeight="19.0" prefWidth="105.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="34.0">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </TextField>
+                  <TextField editable="false" layoutX="922.0" layoutY="22.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="22.0" fx:id="x1_textField">
+                     <font>
+                        <Font size="6.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="y1_textField" editable="false" layoutX="922.0" layoutY="38.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="38.0">
+                     <font>
+                        <Font size="6.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="y2_textField" editable="false" layoutX="1013.0" layoutY="38.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="38.0">
+                     <font>
+                        <Font size="6.0" />
+                     </font>
+                  </TextField>
+                  <TextField editable="false" layoutX="1013.0" layoutY="22.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="22.0" fx:id="x2_textField">
+                     <font>
+                        <Font size="6.0" />
+                     </font>
+                  </TextField>
+                  <RadioButton fx:id="point1" layoutX="903.0" layoutY="5.0" mnemonicParsing="false" selected="true" text="Point 1" AnchorPane.rightAnchor="246.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font size="10.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="412.0" layoutY="21.0" AnchorPane.rightAnchor="187.0" AnchorPane.topAnchor="21.0" fx:id="x2">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="point" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="point2" layoutX="997.0" layoutY="5.0" mnemonicParsing="false" text="Point 2" toggleGroup="$point" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font size="10.0" />
                      </font>
-                  </Label>
-                  <Label fx:id="y1" layoutX="320.0" layoutY="37.0" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="37.0">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="y2" layoutX="412.0" layoutY="37.0" AnchorPane.rightAnchor="187.0" AnchorPane.topAnchor="37.0">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
+                  </RadioButton>
                </children>
             </AnchorPane>
          </top>
