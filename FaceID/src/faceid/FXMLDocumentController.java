@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -43,6 +44,24 @@ public class FXMLDocumentController implements Initializable {
     private ImageView imageView;
     @FXML
     private AnchorPane workSpace;
+    @FXML
+    private CheckBox edges;
+    @FXML
+    private CheckBox point1;
+    @FXML
+    private CheckBox point2;
+    @FXML
+    private Button calculate;
+    @FXML
+    private Label thickness;
+    @FXML
+    private Label x1;
+    @FXML
+    private Label x2;
+    @FXML
+    private Label y1;
+    @FXML
+    private Label y2;
     
     
     
