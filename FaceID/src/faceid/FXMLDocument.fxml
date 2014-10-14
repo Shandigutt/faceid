@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faceid.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faceid.FXMLDocumentController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -28,7 +29,6 @@
                <children>
                   <Button fx:id="open" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openDirectory" text="Open Directory" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
                   <Label fx:id="locationPath" layoutX="118.0" layoutY="18.0" AnchorPane.leftAnchor="118.0" AnchorPane.topAnchor="18.0" />
-                  <CheckBox fx:id="edges" layoutX="498.0" layoutY="10.0" mnemonicParsing="false" text="Detect edges" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="10.0" />
                   <CheckBox fx:id="point1" layoutX="304.0" layoutY="2.0" mnemonicParsing="false" text="Point 1" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="2.0" />
                   <CheckBox fx:id="point2" layoutX="396.0" layoutY="2.0" mnemonicParsing="false" text="Point 2" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="2.0" />
                   <Label layoutX="305.0" layoutY="21.0" text="X1:" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="21.0">
@@ -77,9 +77,19 @@
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane fx:id="workSpace" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lavender;" BorderPane.alignment="CENTER">
+            <AnchorPane>
                <children>
-                  <ImageView fx:id="imageView" fitHeight="344.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <ScrollPane prefViewportHeight="364.0" prefViewportWidth="1003.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <AnchorPane fx:id="workSpace" minHeight="600.0" minWidth="1200.0" style="-fx-background-color: lavender;" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="imageView1" fitHeight="580.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                              <Line endY="550.0" layoutX="416.0" layoutY="69.0" startY="-50.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                              <ImageView fx:id="imageView2" fitHeight="580.0" fitWidth="580.0" layoutX="620.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
          </center>

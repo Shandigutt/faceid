@@ -6,13 +6,17 @@
 
 package faceid;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +28,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
+import javax.imageio.ImageIO;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.highgui.Highgui;
+import org.opencv.imgproc.Imgproc;
 
 /**
  *
@@ -34,14 +43,13 @@ public class FXMLDocumentController implements Initializable {
     private String location;
     private static int fileCount = 0;
     private ObservableList filesCollectin;
+    
     @FXML
     private Button open;
     @FXML
     private Label locationPath;
     @FXML
     private ListView<String> fileList;
-    @FXML
-    private ImageView imageView;
     @FXML
     private AnchorPane workSpace;
     @FXML
@@ -62,6 +70,10 @@ public class FXMLDocumentController implements Initializable {
     private Label y1;
     @FXML
     private Label y2;
+    @FXML
+    private ImageView imageView1;
+    @FXML
+    private ImageView imageView2;
     
     
     
@@ -94,17 +106,38 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        imageView.fitHeightProperty().bind(workSpace.heightProperty());
+        imageView1.fitHeightProperty().bind(workSpace.heightProperty());
         //imageView.
         
         fileList.getSelectionModel().selectedItemProperty().addListener(
             new ChangeListener<String>() {
+                Mat fillImage;
+                Mat cannyImage;
+                MatOfByte matOfByte;
+                byte[] byteArray;
+                BufferedImage bufferedImage = null;
+                
                 public void changed(ObservableValue<? extends String> ov, 
                     String old_val, String new_val) {
-                        //label.setText(new_val);
-                        //label.setTextFill(Color.web(new_val));
-                    //System.out.println(location + "\\" + new_val);
-                    imageView.setImage(new Image("file:" + location + "\\" + new_val));
+                    
+                    imageView1.setImage(new Image("file:" + location + "\\" + new_val));
+                    fillImage  = Highgui.imread(location + "\\" + new_val);
+                    cannyImage = new Mat();
+                    matOfByte = new MatOfByte();
+                    Imgproc.Canny(fillImage, cannyImage, 10, 100, 3, true);//Applying canny algorithm 
+                    Highgui.imencode(".jpg", cannyImage, matOfByte);//encoding Mat image to MatOfByte
+                    byteArray = matOfByte.toArray();
+                    
+                    try {
+
+                        InputStream in = new ByteArrayInputStream(byteArray);
+                        bufferedImage = ImageIO.read(in);
+                        in.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    
+                    imageView2.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
                     
             }
         });
