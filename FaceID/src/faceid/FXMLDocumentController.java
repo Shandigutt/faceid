@@ -155,7 +155,7 @@ public class FXMLDocumentController implements Initializable {
         });
         
         imageView1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//testing comment
+
             @Override
             public void handle(MouseEvent event) {
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
