@@ -110,6 +110,7 @@ public class FXMLDocumentController implements Initializable {
     }
     @FXML
     private void calculate(ActionEvent event) {
+        
         thickness = (double)Math.sqrt((((x2 - x1)*(x2 - x1)) + ((y1-y2)*(y1-y2))));
         thickness_textField.setText(""+thickness);
     }
@@ -154,17 +155,39 @@ public class FXMLDocumentController implements Initializable {
         });
         
         imageView1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+//testing comment
             @Override
             public void handle(MouseEvent event) {
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                //System.out.println(point.getSelectedToggle().);
                 
-                if(point.getSelectedToggle().getUserData().equals(point1.getUserData())){
+                if(point.getSelectedToggle().equals(point1)){
                     x1 = (double) event.getX();
                     y1 = (double) event.getY();
                     x1_textField.setText(""+x1);
                     y1_textField.setText(""+y1);
-                }else if(point.getSelectedToggle().getUserData().equals(point2.getUserData())){
+                }else if(point.getSelectedToggle().equals(point2)){
+                    x2 = (double) event.getX();
+                    y2 = (double) event.getY();
+                    x2_textField.setText(""+x2);
+                    y2_textField.setText(""+y2);
+                }
+            }
+        });
+        
+        imageView1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                //System.out.println(point.getSelectedToggle().);
+                
+                if(point.getSelectedToggle().equals(point1)){
+                    x1 = (double) event.getX();
+                    y1 = (double) event.getY();
+                    x1_textField.setText(""+x1);
+                    y1_textField.setText(""+y1);
+                }else if(point.getSelectedToggle().equals(point2)){
                     x2 = (double) event.getX();
                     y2 = (double) event.getY();
                     x2_textField.setText(""+x2);

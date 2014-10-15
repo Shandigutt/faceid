@@ -49,7 +49,7 @@
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <Button fx:id="calculate" layoutX="183.0" layoutY="6.0" mnemonicParsing="false" text="Measure distance" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="6.0" />
+                  <Button fx:id="calculate" layoutX="183.0" layoutY="6.0" mnemonicParsing="false" onAction="#calculate" text="Measure distance" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="6.0" />
                   <TextField fx:id="thickness_textField" editable="false" layoutX="785.0" layoutY="34.0" prefHeight="19.0" prefWidth="105.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="34.0">
                      <font>
                         <Font size="8.0" />
