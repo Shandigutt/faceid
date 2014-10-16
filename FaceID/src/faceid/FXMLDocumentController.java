@@ -109,7 +109,7 @@ public class FXMLDocumentController implements Initializable {
         
     }
     @FXML
-    private void calculate(ActionEvent event) {
+    private void calculate(ActionEvent event) { //calculate tissue thickness 
         
         thickness = (double)Math.sqrt((((x2 - x1)*(x2 - x1)) + ((y1-y2)*(y1-y2))));
         thickness_textField.setText(""+thickness);
