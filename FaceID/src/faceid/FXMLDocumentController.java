@@ -21,17 +21,23 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import static javafx.scene.paint.Color.rgb;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.stage.DirectoryChooser;
 import javax.imageio.ImageIO;
 import org.opencv.core.Mat;
@@ -80,6 +86,14 @@ public class FXMLDocumentController implements Initializable {
     private ImageView imageView2;
     @FXML
     private ToggleGroup point;
+    @FXML
+    private Button clear;
+    @FXML
+    private ScrollPane workSpaceScrollPane;
+    @FXML
+    private SplitPane workSpaceSplitPane;
+    @FXML
+    private AnchorPane workSpace1;
     
     
     
@@ -119,7 +133,8 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         imageView1.fitHeightProperty().bind(workSpace.heightProperty());
-        //imageView.
+        imageView1.setCursor(Cursor.CROSSHAIR); //Change cursor to crosshair
+        imageView2.setCursor(Cursor.CROSSHAIR); //Change cursor to crosshair
         
         fileList.getSelectionModel().selectedItemProperty().addListener(
             new ChangeListener<String>() {
@@ -154,44 +169,75 @@ public class FXMLDocumentController implements Initializable {
             }
         });
         
-        imageView1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+        
+        imageView2.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                //System.out.println(point.getSelectedToggle().);
                 
                 if(point.getSelectedToggle().equals(point1)){
-                    x1 = (double) event.getX();
-                    y1 = (double) event.getY();
+                    x1 = (int) event.getX();
+                    y1 = (int) event.getY();
                     x1_textField.setText(""+x1);
                     y1_textField.setText(""+y1);
+                     
+                    Circle circle = new Circle();
+                    
+                    circle.setCenterX(x1);
+                    circle.setCenterY(y1);
+                    circle.setFill(rgb(255,0,0));
+                    //circle.setStroke(rgb(255,0,0));
+                    //circle.setStrokeWidth(6);
+                    circle.setRadius(2.0f);
+                    workSpace.getChildren().add(circle);
+                    workSpace1.getChildren().add(circle);
+                    
+                
                 }else if(point.getSelectedToggle().equals(point2)){
-                    x2 = (double) event.getX();
-                    y2 = (double) event.getY();
+                    x2 = (int) event.getX();
+                    y2 = (int) event.getY();
                     x2_textField.setText(""+x2);
                     y2_textField.setText(""+y2);
+                    
+                    //Drawing cricle for point 2 goes here
+                    Circle circle1 = new Circle();
+                    circle1.setCenterX(x2);
+                    circle1.setCenterY(y2);
+                    circle1.setFill(rgb(0,255,0));
+                    //circle1.setStroke(rgb(0,255,0));
+                    //circle1.setStrokeWidth(6);
+                    circle1.setRadius(2.0f);
+                    workSpace.getChildren().add(circle1);
+                    workSpace1.getChildren().add(circle1);
+                    
+                    //Drawing line between two points goes here
+                    Line line = new Line();
+                    line.setStartX(x1);
+                    line.setStartY(y1);
+                    line.setEndX(x2);
+                    line.setEndY(y2);
+                    line.setFill(rgb(0,0,255));
+                    line.setStroke(rgb(0,0,255));
+                    line.setStrokeWidth(1);
+                    workSpace1.getChildren().add(line);
                 }
+
             }
         });
         
-        imageView1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+        clear.setOnAction(new EventHandler<ActionEvent>() {//clearing all the components goes here
             @Override
-            public void handle(MouseEvent event) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                //System.out.println(point.getSelectedToggle().);
-                
-                if(point.getSelectedToggle().equals(point1)){
-                    x1 = (double) event.getX();
-                    y1 = (double) event.getY();
-                    x1_textField.setText(""+x1);
-                    y1_textField.setText(""+y1);
-                }else if(point.getSelectedToggle().equals(point2)){
-                    x2 = (double) event.getX();
-                    y2 = (double) event.getY();
-                    x2_textField.setText(""+x2);
-                    y2_textField.setText(""+y2);
+            public void handle(ActionEvent e) {
+                x1_textField.clear();
+                y1_textField.clear();
+                x2_textField.clear();
+                y2_textField.clear();
+                thickness_textField.clear();
+                ObservableList tempList = workSpace1.getChildren();
+                int size = tempList.size();
+                for (int i = 1; i <= (size-1); i++) {
+                    tempList.remove(1);
                 }
             }
         });

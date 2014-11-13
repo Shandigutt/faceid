@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faceid.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="1268.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faceid.FXMLDocumentController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -25,84 +25,82 @@
             </VBox>
          </left>
          <top>
-            <AnchorPane prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: gainsboro;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="79.0" prefWidth="1268.0" style="-fx-background-color: gainsboro;" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="open" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openDirectory" text="Open Directory" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
                   <Label fx:id="locationPath" layoutX="118.0" layoutY="18.0" AnchorPane.leftAnchor="118.0" AnchorPane.topAnchor="18.0" />
-                  <Label layoutX="305.0" layoutY="21.0" text="X1:" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="21.0">
+                  <Label layoutX="778.0" layoutY="33.0" text="X1:" AnchorPane.rightAnchor="473.0" AnchorPane.topAnchor="33.0" />
+                  <Label layoutX="879.0" layoutY="33.0" text="X2:" AnchorPane.rightAnchor="372.0" AnchorPane.topAnchor="33.0" />
+                  <Label layoutX="779.0" layoutY="57.0" text="Y1:" AnchorPane.rightAnchor="473.0" AnchorPane.topAnchor="57.0" />
+                  <Label layoutX="880.0" layoutY="56.0" text="Y2:" AnchorPane.rightAnchor="372.0" AnchorPane.topAnchor="56.0" />
+                  <Button fx:id="calculate" layoutX="969.0" layoutY="10.0" mnemonicParsing="false" onAction="#calculate" text="Measure distance" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <TextField fx:id="thickness_textField" editable="false" layoutX="971.0" layoutY="44.0" prefHeight="28.0" prefWidth="126.0" promptText="Distance" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="44.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField editable="false" layoutX="800.0" layoutY="28.0" prefHeight="11.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="411.0" AnchorPane.topAnchor="28.0" fx:id="x1_textField">
                      <font>
                         <Font size="10.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="397.0" layoutY="21.0" text="X2:" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="21.0">
+                  </TextField>
+                  <TextField fx:id="y1_textField" editable="false" layoutX="800.0" layoutY="52.0" prefHeight="23.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="411.0" AnchorPane.topAnchor="52.0">
                      <font>
                         <Font size="10.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="305.0" layoutY="37.0" text="Y1:" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="37.0">
+                  </TextField>
+                  <TextField fx:id="y2_textField" editable="false" layoutX="898.0" layoutY="53.0" prefHeight="8.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="53.0">
                      <font>
                         <Font size="10.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="397.0" layoutY="37.0" text="Y2:" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="37.0">
+                  </TextField>
+                  <TextField editable="false" layoutX="898.0" layoutY="29.0" prefHeight="8.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="29.0" fx:id="x2_textField">
                      <font>
                         <Font size="10.0" />
                      </font>
-                  </Label>
-                  <Button fx:id="calculate" layoutX="183.0" layoutY="6.0" mnemonicParsing="false" onAction="#calculate" text="Measure distance" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="6.0" />
-                  <TextField fx:id="thickness_textField" editable="false" layoutX="785.0" layoutY="34.0" prefHeight="19.0" prefWidth="105.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="34.0">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
                   </TextField>
-                  <TextField editable="false" layoutX="922.0" layoutY="22.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="22.0" fx:id="x1_textField">
+                  <RadioButton fx:id="point1" layoutX="779.0" layoutY="3.0" mnemonicParsing="false" selected="true" text="Point 1" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="3.0">
                      <font>
-                        <Font size="6.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="y1_textField" editable="false" layoutX="922.0" layoutY="38.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="38.0">
-                     <font>
-                        <Font size="6.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="y2_textField" editable="false" layoutX="1013.0" layoutY="38.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="38.0">
-                     <font>
-                        <Font size="6.0" />
-                     </font>
-                  </TextField>
-                  <TextField editable="false" layoutX="1013.0" layoutY="22.0" prefHeight="8.0" prefWidth="57.0" text="0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="22.0" fx:id="x2_textField">
-                     <font>
-                        <Font size="6.0" />
-                     </font>
-                  </TextField>
-                  <RadioButton fx:id="point1" layoutX="903.0" layoutY="5.0" mnemonicParsing="false" selected="true" text="Point 1" AnchorPane.rightAnchor="246.0" AnchorPane.topAnchor="5.0">
-                     <font>
-                        <Font size="10.0" />
+                        <Font size="14.0" />
                      </font>
                      <toggleGroup>
                         <ToggleGroup fx:id="point" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="point2" layoutX="997.0" layoutY="5.0" mnemonicParsing="false" text="Point 2" toggleGroup="$point" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="5.0">
+                  <RadioButton fx:id="point2" layoutX="878.0" layoutY="3.0" mnemonicParsing="false" text="Point 2" toggleGroup="$point" AnchorPane.rightAnchor="321.0" AnchorPane.topAnchor="3.0">
                      <font>
-                        <Font size="10.0" />
+                        <Font size="14.0" />
                      </font>
                   </RadioButton>
+                  <Button fx:id="clear" layoutX="1112.0" layoutY="12.0" mnemonicParsing="false" text="Reset" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="12.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </top>
          <center>
             <AnchorPane>
                <children>
-                  <ScrollPane prefViewportHeight="364.0" prefViewportWidth="1003.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fx:id="workSpaceScrollPane" prefViewportHeight="364.0" prefViewportWidth="1003.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <AnchorPane fx:id="workSpace" minHeight="600.0" minWidth="1200.0" style="-fx-background-color: lavender;" BorderPane.alignment="CENTER">
-                           <children>
-                              <ImageView fx:id="imageView1" fitHeight="580.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                              <Line endY="550.0" layoutX="416.0" layoutY="69.0" startY="-50.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
-                              <ImageView fx:id="imageView2" fitHeight="580.0" fitWidth="580.0" layoutX="620.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                           </children>
-                        </AnchorPane>
+                        <SplitPane fx:id="workSpaceSplitPane" dividerPositions="0.5111788617886179" prefHeight="601.0" prefWidth="1068.0">
+                          <items>
+                            <AnchorPane fx:id="workSpace" minHeight="0.0" minWidth="0.0" prefHeight="605.0" prefWidth="500.0" style="-fx-background-color: gainsboro;">
+                                 <children>
+                                    <ImageView fx:id="imageView1" fitHeight="512.0" fitWidth="512.0" layoutX="-1.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane fx:id="workSpace1" minHeight="0.0" minWidth="0.0" prefHeight="599.0" prefWidth="536.0" style="-fx-background-color: gainsboro;">
+                                 <children>
+                                    <ImageView fx:id="imageView2" fitHeight="512.0" fitWidth="512.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
                      </content>
                   </ScrollPane>
                </children>
