@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="1268.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faceid.FXMLSecondPageController">
+   <children>
+      <BorderPane layoutY="24.0" prefHeight="644.0" prefWidth="1268.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+         <left>
+            <VBox prefHeight="500.0" prefWidth="197.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="500.0" prefWidth="197.0" VBox.vgrow="ALWAYS">
+                     <content>
+                        <ListView fx:id="fileList" prefHeight="500.0" prefWidth="195.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </left>
+         <top>
+            <AnchorPane prefHeight="64.0" prefWidth="1268.0" style="-fx-background-color: gainsboro;" BorderPane.alignment="CENTER">
+               <children>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="64.0" prefWidth="1268.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="851.0" layoutY="23.0" text="Feature Point: " AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="23.0">
+                           <font>
+                              <Font name="Batang" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_field_featurePoint" layoutX="955.0" layoutY="18.0" prefHeight="25.0" prefWidth="230.0" promptText="Feature Point" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="18.0">
+                           <font>
+                              <Font name="Batang" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="38.0" layoutY="16.0" prefHeight="64.0" prefWidth="1268.0" text="Feature Point Selector" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Aharoni Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="1157.0" layoutY="20.0" mnemonicParsing="false" text="Save" AnchorPane.bottomAnchor="21.0" AnchorPane.topAnchor="18.0">
+                           <font>
+                              <Font name="Batang" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>  
+                    </AnchorPane>  
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane>
+               <children>
+                  <SplitPane dividerPositions="0.49579045837231056" layoutX="-1.0" prefHeight="580.0" prefWidth="1071.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane fx:id="workSpace3" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fx:id="image1" fitHeight="602.0" fitWidth="526.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-24.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane fx:id="workSpace4" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fx:id="image2" fitHeight="604.0" fitWidth="539.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-25.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <MenuBar prefHeight="25.0" prefWidth="1268.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
