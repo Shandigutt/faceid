@@ -1,6 +1,7 @@
 
 package faceid;
 import com.sun.javafx.Utils;
+//import faceid.FXMLDatabaseController.userdata;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -19,6 +20,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FillTransition;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -39,6 +42,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -63,29 +68,17 @@ import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.swing.JOptionPane;
-
-
 /**
  *
  * @author Tharaka
  */
 public class FXMLDocumentController extends JFrame implements Initializable {
     
-    private String location;
-    private static int fileCount = 0;
-    private ObservableList filesCollectin;
-    private int x1 =0 ,x2 = 0,y1 = 0,y2 = 0;
-    double thickness;
-    private int radius;
-    
-    private Line    line;
     
     @FXML
     private Button open;
     @FXML
     private Label locationPath;
-    @FXML
-    private Label label_save;
     @FXML
     private ListView<String> fileList;
     @FXML
@@ -100,12 +93,9 @@ public class FXMLDocumentController extends JFrame implements Initializable {
     private Button calculate;
     @FXML
     private TextField thickness_textField;
+//    private TextField txt_field_featurePoint;
     @FXML
-    private TextField txt_field_ageGroup;
-    @FXML
-    private TextField txt_field_featurePoint;
-    @FXML
-    private TextField txt_field_LayerNum;
+    public TextField txt_field_LayerNum;
     @FXML
     private TextField x1_textField;
     @FXML
@@ -131,23 +121,39 @@ public class FXMLDocumentController extends JFrame implements Initializable {
     @FXML
     private Button databaseWindow;
     @FXML
-    private ComboBox<String> ComboBox_AgeGroup;
+    private ComboBox<String> comboBox_AgeGroup;
     @FXML
-    private ComboBox<String> ComboBox_gender;
+    private ComboBox<String> comboBox_gender;
+    @FXML
+    private ComboBox<String> comboBox_featurePoint;
+    @FXML
+    private Slider workSpaceSlider;
+    @FXML
+    private Slider workSpace1Slider;
     
-    public Graphics g;
+    
+    private String location;
+    private static int fileCount = 0;
+    private ObservableList filesCollectin;
+    private int x1 =0 ,x2 = 0,y1 = 0,y2 = 0;
+    double thickness;
+    private int radius;   
+    private Line    line;
+    Boolean autoFix = true;
+//    public Graphics g;
     Mat fillImage;
     Mat cannyImage;
     MatOfByte matOfByte;
     byte[] byteArray;
     BufferedImage bufferedImage = null;
-    
     public String featurePoint;
-    
     
     Connection conn=null;
     ResultSet rs=null;
     PreparedStatement pst=null;
+    
+    public ObservableList<UserData> data; 
+    ScrollPane scrollPane;
     
     @FXML
     private void openDirectory(ActionEvent event) { // when the open directory button is pressed
@@ -183,14 +189,57 @@ public class FXMLDocumentController extends JFrame implements Initializable {
             "40-45",
             "45-50",
             "50-55",
-            "55-60"    
+            "55-60",
+            "60-65",
+            "65-70",
+            "70-75",
+            "75-80",
+            "80-85",
+            "85-90",
+            "90-95",
+            "95-100"
     );
     //Male / Female list
     ObservableList<String> genderList = FXCollections.observableArrayList(
-            "M",
-            "F"   
+            "Male",
+            "Female"   
+    );
+    //FeaturePointList 
+    ObservableList<String> featurePointList = FXCollections.observableArrayList(
+            "Feature Point",
+            "M1: Bregma (BR)", 
+            "M2: Glabella (GL)", 
+            "M3: Nasion (NA)", 
+            "M4: Nsdodpinslr (NAS)", 
+            "M5: Prosthion (PR)", 
+            "M6: Infradentale (ID)", 
+            "M7: Pogonion (PG)",
+            "M8: Gnathion (GN)",
+            "M9: Orale (OR)",
+            "M10: Staphylion (STA)",
+            "M11: Basion (BA)",
+            "M12: Opistion (OPS)",
+            "M13: Opisthocranium (OPC)",
+            "B1 : Staphanion (ST)", 
+            "B2 : Euryon (EU)" ,
+            "B3 : Frontotemporale (FT)",
+            "B4 : Supraorbitale (SOR)" ,
+            "B5 : Maxillo-frontale (MF)" ,
+            "B6 : Ectoconchion (EC)" ,
+            "B7 : Orbitale (ORB)" ,
+            "B8 : Nasal (NS)" ,
+            "B9 : Zygonion (ZG)" ,
+            "B10: Conlylion laterale (CDL)" ,
+            "B11: Zygomaxilare (ZM)" ,
+            "B12: Lateral infradentale (LID)" ,
+            "B13: Endomolare (ENM)" ,
+            "B14:Bolton (BO)" ,
+            "B15: Gonion (GO)" ,
+            "B16: Coronion (CO)" ,
+            "B17: Condylion superior (CS)"   
     );
     
+    //calculate distance
     @FXML
     private void calculate(ActionEvent event) {
         
@@ -199,7 +248,7 @@ public class FXMLDocumentController extends JFrame implements Initializable {
         thickness_textField.setText(""+thickness);
     }
     
-    
+    //Initialize 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -211,16 +260,16 @@ public class FXMLDocumentController extends JFrame implements Initializable {
         imageView2.setCursor(Cursor.CROSSHAIR); //Change cursor to crosshair
         
         txt_field_LayerNum.setEditable(false);  //Set Layer number textField editable false
-        txt_field_featurePoint.setEditable(false);  //Set featurePoint textField editable false
+        //txt_field_featurePoint.setEditable(false);  //Set featurePoint textField editable false
                 
-        ComboBox_AgeGroup.setItems(ageGroupList);
-        ComboBox_gender.setItems(genderList);
+        comboBox_AgeGroup.setItems(ageGroupList);
+        comboBox_gender.setItems(genderList);
+        comboBox_featurePoint.setItems(featurePointList);
         
         //imageView
         fileList.getSelectionModel().selectedItemProperty().addListener(
             new ChangeListener<String>() {
-                
-                
+             
                 public void changed(ObservableValue<? extends String> ov, 
                     String old_val, String new_val) {
                     
@@ -236,36 +285,34 @@ public class FXMLDocumentController extends JFrame implements Initializable {
                     //canny convertor Image
                     cannyImage = new Mat();
                     matOfByte = new MatOfByte();
-                    Imgproc.Canny(fillImage, cannyImage, 10, 100, 3, true);//Applying canny algorithm 
+                    Imgproc.Canny(fillImage, cannyImage, 20, 100, 3, true);//Applying canny algorithm 
                     Highgui.imencode(".jpg", cannyImage, matOfByte);//encoding Mat image to MatOfByte
                     byteArray = matOfByte.toArray();
                     
                     try {
                         InputStream in = new ByteArrayInputStream(byteArray);
                         bufferedImage = ImageIO.read(in);
+                        //setFix();
                         in.close();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     imageView2.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
                     
-                    txt_field_LayerNum.setText(new_val);
-                    
+                    txt_field_LayerNum.setText(new_val);                  
             }
         });
-        
-        imageView2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        //workSpace1
+        workSpace1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event) {
-                
-                if(point.getSelectedToggle().equals(point1)){
-                    
+            public void handle(MouseEvent event) {                
+                if(point.getSelectedToggle().equals(point1)){                   
                     x1 = (int) event.getX();
                     y1 = (int) event.getY();
                     x1_textField.setText(""+x1);
                     y1_textField.setText(""+y1);
                      
-                    Circle circle = new Circle();
+                    Circle circle = new Circle();   //create circle object
                     
                     circle.setCenterX(x1);
                     circle.setCenterY(y1);
@@ -278,9 +325,7 @@ public class FXMLDocumentController extends JFrame implements Initializable {
                     //circle.setStroke(Color.RED);
                     //circle.fillProperty().setValue(Paint.valueOf(new double[]{0, 0, 255}));
                     //workSpace.getChildren().add(circle);
-                    workSpace1.getChildren().add(circle);
-                    
-                
+                    workSpace1.getChildren().add(circle);   //add circle to workspace
                 }else if(point.getSelectedToggle().equals(point2)){
                     x2 = (int) event.getX();
                     y2 = (int) event.getY();
@@ -311,10 +356,9 @@ public class FXMLDocumentController extends JFrame implements Initializable {
                     line.setStrokeWidth(1);
                     workSpace1.getChildren().add(line);
                 }          
-//                  line = new Line( x1, y1, x2, y2 );
-//                  workSpace1.getChildren().add( line );
             }
         });
+        
         //clear button on action
         clear.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -332,21 +376,29 @@ public class FXMLDocumentController extends JFrame implements Initializable {
                 }  
             }
         });
+        
         //Setting an action for the Submit button
         btn_save.setOnAction(new EventHandler<ActionEvent>() {
         @Override
             public void handle(ActionEvent e) {
                 try{
-                    String sql="Insert into TissueThicknessData(age_group, gender, featurePoint, ctScanLayer, distance) values (?, ?, ?, ?, ?)";
+                    if(comboBox_AgeGroup.getValue() != null && comboBox_gender.getValue() != null && comboBox_featurePoint.getValue() != null && txt_field_LayerNum.getText() != null && thickness_textField.getText() != null){
+                    String sql="Insert into TissueThicknessData(AgeGroup, Gender, FeaturePoint, CTScanLayerNumber, Distance) values (?, ?, ?, ?, ?)";
                     pst=conn.prepareStatement(sql);
                     
-                    pst.setString(1,ComboBox_AgeGroup.getValue());
-                    pst.setString(2,ComboBox_gender.getValue());
-                    pst.setString(3,txt_field_featurePoint.getText());
+                    pst.setString(1,comboBox_AgeGroup.getValue());
+                    pst.setString(2,comboBox_gender.getValue());
+                    pst.setString(3,comboBox_featurePoint.getValue());
                     pst.setString(4,txt_field_LayerNum.getText());
                     pst.setString(5,thickness_textField.getText());
                     pst.execute();
+                    //data.add(new UserData(txt_field_LayerNum.getText(), thickness_textField.getText()));
                     JOptionPane.showMessageDialog(null, "saved"); 
+                    }
+                    else{
+                        String message = "\"An Error\"\n" + "Fill all the fields";
+                        JOptionPane.showMessageDialog(new JFrame(), message, "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 catch(Exception e1){
                     JOptionPane.showMessageDialog(null,e1);
@@ -359,12 +411,13 @@ public class FXMLDocumentController extends JFrame implements Initializable {
             @Override
             public void handle(ActionEvent e) {
                 //ageGroupList.getSelectionModel().clearAndSelect(0);
-                ComboBox_AgeGroup.getItems().clear();
-                ComboBox_gender.getItems().clear();
-                txt_field_featurePoint.clear();
+//                ComboBox_AgeGroup.getItems().clear();
+//                ComboBox_gender.getItems().clear();
+                //txt_field_featurePoint.clear();
                 txt_field_LayerNum.clear();
             }
         });
+        
         //open next Window
         nextWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -380,7 +433,21 @@ public class FXMLDocumentController extends JFrame implements Initializable {
                     stage.show();
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-                }   
+                } 
+                
+                //open window and close earlier window
+//                Node node = (Node) e1.getSource();
+//                Stage stage = (Stage) node.getScene().getWindow();
+//                Scene scene = stage.getScene();
+//
+//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLSecondPage.fxml"));
+//                Parent root = null;
+//                try {
+//                    root = (Parent) fxmlLoader.load();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                scene.setRoot(root);
             }
         });
         
@@ -400,24 +467,33 @@ public class FXMLDocumentController extends JFrame implements Initializable {
                 }  
             }
         });   
-    
     }
-        public String extension(File x) {
-            String filename = x.getName();
-            int IndexFile = filename.lastIndexOf(".");
-            if(IndexFile > 0 && IndexFile<filename.length()-1){
-                return filename.substring(IndexFile+1);
-            }else {
-                return "";
-            }
+    //file flitter
+    public String extension(File x) {
+    String filename = x.getName();
+        int IndexFile = filename.lastIndexOf(".");
+        if(IndexFile > 0 && IndexFile<filename.length()-1){
+            return filename.substring(IndexFile+1);
+        }else {
+        return "";
         }
-        public boolean accept(File x){
-            if(x.isDirectory()){
-                return true;
-            }
-            if(extension(x).equalsIgnoreCase("jpg") | extension(x).equalsIgnoreCase("png")){
-                return true;
-            }else
-                return false;
+  }
+    public boolean accept(File x){
+        if(x.isDirectory()){
+            return true;
         }
+        if(extension(x).equalsIgnoreCase("jpg") | extension(x).equalsIgnoreCase("png")){
+            return true;
+        }else
+            return false;
+    }    
+//    @FXML
+//    public void setText(String name){
+//        txt_field_featurePoint.setText(name);
+//    }
+    void setUser(String featurePoint) {
+        this.featurePoint = featurePoint;
+//        txt_field_featurePoint.setText(featurePoint);
+//        System.out.println(featurePoint);
+        }    
 }
