@@ -29,9 +29,7 @@ public class FaceID extends Application {
 //        stage.setFullScreen(true);  
         stage.show();  
     }
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         System.loadLibrary("opencv_java249");//Load opencv library
         launch(args);    

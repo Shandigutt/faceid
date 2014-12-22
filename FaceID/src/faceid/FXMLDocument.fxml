@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1274.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faceid.FXMLDocumentController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="751.0" prefWidth="1433.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faceid.FXMLDocumentController">
    <children>
       <BorderPane layoutY="27.0" prefHeight="707.0" prefWidth="1274.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -52,7 +52,7 @@
                           <items>
                             <AnchorPane prefHeight="34.0" prefWidth="1272.0">
                                  <children>
-                                    <Label layoutX="-4.0" layoutY="7.0" text="   Tissue Thickness Extractor">
+                                    <Label layoutX="-4.0" layoutY="7.0" text="   Tissue Thickness Measurement Software">
                                        <font>
                                           <Font name="Aharoni Bold" size="24.0" />
                                        </font>
@@ -83,52 +83,52 @@
                             
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="76.0" prefWidth="1266.0">
                                  <children>
-                                    <Label layoutX="906.0" layoutY="38.0" text="X1:" AnchorPane.rightAnchor="343.0" AnchorPane.topAnchor="38.0">
+                                    <Label layoutX="829.0" layoutY="40.0" text="X1:" AnchorPane.rightAnchor="579.0" AnchorPane.topAnchor="40.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>
-                                      <Label layoutX="1007.0" layoutY="38.0" text="X2:" AnchorPane.rightAnchor="242.0" AnchorPane.topAnchor="38.0">
+                                      <Label layoutX="930.0" layoutY="40.0" text="X2:" AnchorPane.rightAnchor="478.0" AnchorPane.topAnchor="40.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>
-                                      <Label layoutX="906.0" layoutY="62.0" text="Y1:" AnchorPane.rightAnchor="343.0" AnchorPane.topAnchor="62.0">
+                                      <Label layoutX="829.0" layoutY="64.0" text="Y1:" AnchorPane.rightAnchor="579.0" AnchorPane.topAnchor="64.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>
-                                      <Label layoutX="1007.0" layoutY="61.0" text="Y2:" AnchorPane.rightAnchor="242.0" AnchorPane.topAnchor="61.0">
+                                      <Label layoutX="930.0" layoutY="63.0" text="Y2:" AnchorPane.rightAnchor="478.0" AnchorPane.topAnchor="63.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>
-                                          <Button fx:id="calculate" layoutX="1110.0" layoutY="15.0" mnemonicParsing="false" onAction="#calculate" prefHeight="30.0" prefWidth="150.0" text="Measure distance" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
+                                          <Button fx:id="calculate" layoutX="990.0" layoutY="14.0" mnemonicParsing="false" onAction="#calculate" prefHeight="30.0" prefWidth="138.0" text="Measure distance" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="14.0">
                                               <font>
                                                   <Font name="Garamond" size="16.0" />
                                               </font>
                                           </Button>
-                                      <TextField editable="false" layoutX="934.0" layoutY="33.0" prefHeight="11.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="33.0" fx:id="x1_textField">
+                                      <TextField editable="false" layoutX="857.0" layoutY="35.0" prefHeight="11.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="517.0" AnchorPane.topAnchor="35.0" fx:id="x1_textField">
                                           <font>
                                               <Font name="Batang" size="14.0" />
                                           </font>
                                       </TextField>
-                                      <TextField fx:id="y1_textField" editable="false" layoutX="934.0" layoutY="57.0" prefHeight="23.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="57.0">
+                                      <TextField fx:id="y1_textField" editable="false" layoutX="857.0" layoutY="59.0" prefHeight="23.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="517.0" AnchorPane.topAnchor="59.0">
                                           <font>
                                               <Font name="Batang" size="14.0" />
                                           </font>
                                       </TextField>
-                                      <TextField fx:id="y2_textField" editable="false" layoutX="1032.0" layoutY="58.0" prefHeight="8.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="183.0" AnchorPane.topAnchor="58.0">
+                                      <TextField fx:id="y2_textField" editable="false" layoutX="955.0" layoutY="60.0" prefHeight="8.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="419.0" AnchorPane.topAnchor="60.0">
                                           <font>
                                               <Font name="Batang" size="14.0" />
                                           </font>
                                       </TextField>
-                                      <TextField editable="false" layoutX="1032.0" layoutY="34.0" prefHeight="8.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="183.0" AnchorPane.topAnchor="34.0" fx:id="x2_textField">
+                                      <TextField editable="false" layoutX="955.0" layoutY="36.0" prefHeight="8.0" prefWidth="57.0" promptText="0" AnchorPane.rightAnchor="419.0" AnchorPane.topAnchor="36.0" fx:id="x2_textField">
                                           <font>
                                               <Font name="Batang" size="14.0" />
                                           </font>
                                       </TextField>
-                                      <RadioButton fx:id="point1" layoutX="909.0" layoutY="8.0" mnemonicParsing="false" selected="true" text="Point 1" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="8.0">
+                                      <RadioButton fx:id="point1" layoutX="832.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Point 1" AnchorPane.rightAnchor="526.0" AnchorPane.topAnchor="10.0">
                                           <font>
                                               <Font name="Batang" size="14.0" />
                                           </font>
@@ -136,17 +136,17 @@
                                                   <ToggleGroup fx:id="point" />
                                               </toggleGroup>
                                       </RadioButton>
-                                      <RadioButton fx:id="point2" layoutX="1008.0" layoutY="8.0" mnemonicParsing="false" text="Point 2" toggleGroup="$point" AnchorPane.rightAnchor="191.0" AnchorPane.topAnchor="8.0">
+                                      <RadioButton fx:id="point2" layoutX="931.0" layoutY="10.0" mnemonicParsing="false" text="Point 2" toggleGroup="$point" AnchorPane.rightAnchor="427.0" AnchorPane.topAnchor="10.0">
                                           <font>
                                               <Font name="Batang" size="14.0" />
                                           </font>
                                       </RadioButton>
-                                      <Button fx:id="clear" layoutX="1110.0" layoutY="51.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Reset" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="51.0">
+                                      <Button fx:id="clear" layoutX="1074.0" layoutY="51.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="Reset" AnchorPane.rightAnchor="258.0" AnchorPane.topAnchor="51.0">
                                           <font>
                                               <Font name="Garamond" size="16.0" />
                                           </font>
                                       </Button>
-                                      <TextField fx:id="thickness_textField" editable="false" layoutX="597.0" layoutY="46.0" prefHeight="30.0" prefWidth="177.0" promptText="Distance" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="597.0" AnchorPane.topAnchor="46.0">
+                                      <TextField fx:id="thickness_textField" editable="false" layoutX="571.0" layoutY="46.0" prefHeight="30.0" prefWidth="177.0" promptText="Distance" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="571.0" AnchorPane.topAnchor="46.0">
                                           <font>
                                               <Font name="Batang" size="14.0" />
                                           </font>
@@ -159,37 +159,31 @@
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>  
-                                    <Label layoutX="412.0" layoutY="10.0" prefHeight="24.0" prefWidth="131.0" text="Layer Number:" AnchorPane.leftAnchor="412.0" AnchorPane.topAnchor="10.0">
+                                    <Label layoutX="386.0" layoutY="10.0" prefHeight="24.0" prefWidth="131.0" text="Layer Number:" AnchorPane.leftAnchor="386.0" AnchorPane.topAnchor="10.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="txt_field_LayerNum" layoutX="411.0" layoutY="46.0" prefHeight="25.0" prefWidth="177.0" promptText="CT scan Layer Number" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="411.0" AnchorPane.topAnchor="46.0">
+                                    <TextField fx:id="txt_field_LayerNum" layoutX="385.0" layoutY="46.0" prefHeight="25.0" prefWidth="177.0" promptText="CT scan Layer Number" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="46.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Label layoutX="599.0" layoutY="10.0" prefHeight="24.0" prefWidth="176.0" text="Distance Measurement: " AnchorPane.leftAnchor="599.0" AnchorPane.topAnchor="10.0">
+                                    <Label layoutX="573.0" layoutY="10.0" prefHeight="24.0" prefWidth="176.0" text="Distance Measurement: " AnchorPane.leftAnchor="573.0" AnchorPane.topAnchor="10.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="btn_reset" layoutX="785.0" layoutY="46.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="78.0" text="Reset" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="785.0" AnchorPane.topAnchor="46.0">
-                                       <font>
-                                          <Font name="Garamond" size="16.0" />
-                                       </font>
-                                    </Button>
                                     <Label layoutX="15.0" layoutY="10.0" prefHeight="24.0" prefWidth="102.0" text="Age Group:" AnchorPane.topAnchor="10.0">
                                        <font>
                                           <Font name="Batang" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="btn_save" layoutX="785.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="Save" AnchorPane.topAnchor="10.0">
+                                    <Button fx:id="btn_save" layoutX="1033.0" layoutY="51.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="Save" AnchorPane.rightAnchor="331.0" AnchorPane.topAnchor="51.0">
                                        <font>
                                           <Font name="Garamond" size="16.0" />
                                        </font>
                                     </Button>
-                                    <Line endX="10.0" layoutX="930.0" layoutY="40.0" rotate="90.0" startX="-100.0" AnchorPane.bottomAnchor="48.5" AnchorPane.leftAnchor="830.5" AnchorPane.topAnchor="39.5" />
                                     <ComboBox fx:id="comboBox_AgeGroup" layoutX="13.0" layoutY="47.0" prefHeight="25.0" prefWidth="104.0" promptText="Age Group" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="46.0" />
                                     <Label layoutX="126.0" layoutY="10.0" prefHeight="24.0" prefWidth="79.0" text="Gender:" AnchorPane.topAnchor="10.0">
                                        <font>
@@ -197,7 +191,9 @@
                                        </font>
                                     </Label>
                                     <ComboBox fx:id="comboBox_gender" layoutX="126.0" layoutY="46.0" prefHeight="29.0" prefWidth="89.0" promptText="Gender" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="46.0" />
-                                    <ComboBox fx:id="comboBox_featurePoint" layoutX="225.0" layoutY="48.0" prefHeight="29.0" prefWidth="150.0" promptText="Feature Point" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="46.0" />
+                                    <Slider fx:id="zoomSlider" layoutX="1196.0" layoutY="52.0" prefHeight="14.0" prefWidth="225.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="52.0" />
+                                    <Slider fx:id="zoomSlider1" layoutX="1196.0" layoutY="14.0" prefHeight="14.0" prefWidth="225.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0" />
+                                    <ComboBox fx:id="comboBox_featurePoint" layoutX="227.0" layoutY="47.0" prefHeight="29.0" prefWidth="147.0" promptText="Feature Point" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="46.0" />
                                     
                                  </children>
                             </AnchorPane>
@@ -215,18 +211,18 @@
                     <items>
                         <AnchorPane>
                            <children>
-                              <VBox>
+                              <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ScrollPane prefViewportHeight="400.0" prefViewportWidth="566.0">
+                                    <ScrollPane fx:id="scrollPaneImageView1" VBox.vgrow="ALWAYS">
                                        <content>
                                         <AnchorPane fx:id="workSpace">
                                              <children>
-                                                <ImageView fx:id="imageView1" fitHeight="400.0" fitWidth="566.0" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imageView1" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
                                        </content>
                                     </ScrollPane>
-                                    <AnchorPane prefHeight="30.0" style="-fx-background-color: black;">
+                                    <AnchorPane layoutY="5.0" prefHeight="30.0" style="-fx-background-color: black;" VBox.vgrow="NEVER">
                                        <children>
                                           <Slider fx:id="workSpaceSlider" layoutX="195.0" layoutY="8.0" showTickMarks="true" snapToTicks="true" value="50.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="8.0" />
                                        </children>
@@ -237,18 +233,18 @@
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="10.0">
                            <children>
-                              <VBox>
+                              <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ScrollPane prefViewportHeight="400.0" prefViewportWidth="566.0">
+                                    <ScrollPane fx:id="scrollPaneImageView2" prefViewportHeight="400.0" prefViewportWidth="566.0" VBox.vgrow="ALWAYS">
                                        <content>
                                           <AnchorPane fx:id="workSpace1">
                                              <children>
-                                                <ImageView fx:id="imageView2" fitHeight="400.0" fitWidth="566.0" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="imageView2" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </AnchorPane>
                                        </content>
                                     </ScrollPane>
-                                    <AnchorPane prefHeight="30.0" style="-fx-background-color: black;">
+                                    <AnchorPane prefHeight="30.0" style="-fx-background-color: black;" VBox.vgrow="NEVER">
                                        <children>
                                           <Slider fx:id="workSpace1Slider" layoutX="195.0" layoutY="8.0" showTickMarks="true" snapToTicks="true" value="50.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="8.0" />
                                        </children>
