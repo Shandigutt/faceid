@@ -11,9 +11,9 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="FaceID.jar" size="38569" download="eager" />
-    <jar href="lib/opencv-249.jar" size="447830" download="eager" />
-    <jar href="lib/sqlite-jdbc-3.8.7.jar" size="3970656" download="eager" />
+    <jar href="FaceID.jar" size="38568" download="eager" />
+    <jar href="lib/opencv-249.jar" size="464721" download="eager" />
+    <jar href="lib/sqlite-jdbc-3.8.7.jar" size="3970653" download="eager" />
   </resources>
 <security>
   <all-permissions/>

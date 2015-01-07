@@ -195,6 +195,7 @@ public class FXMLDocumentController extends JFrame implements Initializable {
     MatOfByte matOfByte;
     byte[] byteArray;
     BufferedImage bufferedImage = null;
+    BufferedImage croppedImage = null;
     
     Connection conn=null;
     ResultSet rs=null;
@@ -530,12 +531,17 @@ public class FXMLDocumentController extends JFrame implements Initializable {
             try {
                 InputStream in = new ByteArrayInputStream(byteArray);
                 bufferedImage = ImageIO.read(in);
+                
                 //setFix();
                 in.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         
+            // create a cropped image from the original image
+//            BufferedImage croppedImage = bufferedImage.getSubimage(50, 50, 300, 300);
+//            System.out.println("croppedImage" + croppedImage.getHeight() + ":" + croppedImage.getWidth());
+            
         //......................................................................  
         
 //        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();  
@@ -560,14 +566,13 @@ public class FXMLDocumentController extends JFrame implements Initializable {
 //            }  
 //        }  
 //        //Imgproc.drawContours(fillImage, contours, idx, black, CV_FILLED, 8, hierarchy ); 
-//  
-//       
 //        Double compare = matchShapes(cannyImage, cannyImage2, CV_CONTOURS_MATCH_I2, 0);
 //        System.out.println("difference is:" + compare);
 
         //......................................................................
                 
             
+//        imageView2.setImage(SwingFXUtils.toFXImage(croppedImage, null));
         imageView2.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
         txt_field_LayerNum.setText(new_val);
         if(first){
