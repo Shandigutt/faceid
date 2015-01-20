@@ -10,3 +10,4 @@ easily the most subjective as well as one of the most controversial techniques i
 anthropology. But a considerable number of researches have established that this procedure is
 effective to generate approximations in order to identify a disfigured corpse and it is being used
 extensively in the more developed countries in forensic cases.
+
